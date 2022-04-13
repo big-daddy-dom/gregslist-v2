@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="https://bcw.blob.core.windows.net/public/img/9977764104160066">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style/main.css">
+  <link rel="stylesheet" href="assets/style/style.css">
+  <title>gregslist</title>
+</head>
+
+<body>
+  <button class="fab btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-listing-modal">➕</button>
+
+  <header class="sticky-top bg-dark">
+    <nav class="d-flex">
+      <h1 class="selectable text-light" data-bs-toggle="offcanvas" data-bs-target="#sidenav"> 🚗 - GregsList</h1>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div id="listings"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <div class="offcanvas offcanvas-start bg-dark text-light" tabindex="-1" id="sidenav"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel"> 🚗 - GregsList</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-group p-5 bg-danger" data-bs-dismiss="offcanvas">
+        <li class="list-group-item nav-link" onclick="app.carsController.drawCars()">Cars</li>
+        <li class="list-group-item nav-link" onclick="app.housesController.drawHouses()">Houses</li>
+        <li class="list-group-item nav-link" onclick="app.jobsController.drawJobs()">Jobs</li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal fade" id="add-listing-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="add-listing-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="add-listing-modal-label">Add Car</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="listing-modal-form-slot">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.23.0/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"
+    integrity="sha256-hw7v8jZF/rFEdx1ZHepT4D73AFTHLu/P9kEyrNesRyc=" crossorigin="anonymous"></script>
+  <script src="app/main.js" type="module"></script>
+</body>
+
+
+</html>
