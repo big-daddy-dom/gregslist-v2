@@ -1,17 +1,23 @@
 import {House} from "../Models/House.js"
-export function getHouseform(house) {
-  house=house || new House({})
+
+
+
+export function getHouseForm(house) {
+ 
+ 
+  // @ts-ignore
+  house = house || new House({})
   return /*html*/ `
   <form onsubmit="app.housesController.handleSubmit('${house.id}') ">
     <div class="mb-3 d-flex justify-content-between">
       <div>
         <label for="bedrooms" class="form-label">Rooms</label>
-        <input type="text" class="form-control" name="bedrooms" id="bedrooms" aria-describedby="bedrooms"
+        <input type="number" class="form-control" name="bedrooms" id="bedrooms" aria-describedby="bedrooms"
           placeholder="Rooms..." required value="${house.bedrooms}">
       </div>
       <div>
         <label for="bathrooms" class="form-label">Bathrooms</label>
-        <input type="text" class="form-control" name="bathrooms" id="bathrooms" aria-describedby="bathrooms"
+        <input type="number" class="form-control" name="bathrooms" id="bathrooms" aria-describedby="bathrooms"
           placeholder="Bathrooms..." required value="${house.bathrooms}">
       </div>
     </div>
@@ -37,9 +43,16 @@ export function getHouseform(house) {
     </div>
     <div class="mb-3">
       <div>
+        <label for="year" class="form-label">Year Built</label>
+        <input type="number" class="form-control" name="year" id="year" aria-describedby="year"
+          placeholder="Year..." required value = "${house.year}">
+      </div>
+    </div>
+    <div class="mb-3">
+      <div>
         <label for="description" class="form-label">Description</label>
         <textarea type="text" class="form-control" name="description" id="description"
-          aria-describedby="description" placeholder="Description..." min="5" max="250" required> </textarea>
+          aria-describedby="description" placeholder="Description..." min="5" max="250" required> ${house.description} </textarea>
       </div>
     </div>
     
@@ -47,5 +60,5 @@ export function getHouseform(house) {
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       <button type="submit" class="btn btn-primary">${house.id ? 'Save' : 'Create'}</button>
     </div>
-  </form>`;
+  </form>`
 }

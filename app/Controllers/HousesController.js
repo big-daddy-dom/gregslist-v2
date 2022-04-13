@@ -1,5 +1,5 @@
 import { ProxyState } from "../AppState.js";
-import { getHouseform } from "../components/HouseForm.js";
+import { getHouseForm } from "../components/HouseForm.js";
 import { housesService } from "../Services/HousesService.js";
 import { Pop } from "../Utils/Pop.js";
 
@@ -14,8 +14,8 @@ function _drawHouses() {
     </div>
   `
 
-  document.getElementById("listing-modal-form-slot").innerHTML = getHouseform();
-  document.getElementById("add-listing-modal-label").innerText = "Add House 🏠";
+  document.getElementById('listing-modal-form-slot').innerHTML = getHouseForm()
+  document.getElementById('add-listing-modal-label').innerText = "Add House 🏠"
 }
 
 async function _getAllHouses(){
@@ -30,8 +30,8 @@ async function _getAllHouses(){
 export class HousesController {
   //  Do I want to do anything on page load?
   constructor() {
-    ProxyState.on('houses', _drawHouses);
-    _getAllHouses
+    ProxyState.on('houses', _drawHouses)
+    _getAllHouses()
   }
 
   async handleSubmit(id) {
@@ -42,13 +42,13 @@ export class HousesController {
       //@ts-ignore
       const formElem = event.target;
       const formData = {
-        sqfootage: formElem.sqfootage.value,
-        rooms: formElem.rooms.value,
+        bedrooms: formElem.bedrooms.value,
+        bathrooms: formElem.bathrooms.value,
+        levels: formElem.levels.value,
+        year: formElem.year.value,
         price: formElem.price.value,
-        color: formElem.color.value,
-        yearbuilt: formElem.yearbuilt.value,
+        imgUrl: formElem.img.value,
         description: formElem.description.value,
-        img: formElem.img.value,
       }
       if (id == 'undefined'){
 
@@ -70,19 +70,21 @@ export class HousesController {
       Pop.toast(error.message, "error")
     }
   }
+
   drawHouses() {
     _drawHouses()
     // REVIEW [epic=Mark] How could we refactor this?
     // @ts-ignore
     bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('sidenav')).hide()
   }
+
 openEditor(id){
   let house = ProxyState.houses.find(h=>h.id==id)
   if (!house) {
     Pop.toast("Invalid House Id", 'error')
     return
   }
-  document.getElementById("listing-modal-form-slot").innerHTML = getHouseform(house);
+  document.getElementById("listing-modal-form-slot").innerHTML = getHouseForm();
   // @ts-ignore
   bootstrap.Modal.getOrCreateInstance(document.getElementById('add-listing-modal')).show()
 

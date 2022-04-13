@@ -1,8 +1,8 @@
-import { generateId } from "../Utils/generateId.js";
+
 
 export class House {
   constructor({
- id,
+    id,
     bedrooms,
     bathrooms,
     levels,
@@ -11,21 +11,22 @@ export class House {
     imgUrl,
     year,
   }) {
-    if (!price || !bedrooms || !bathrooms) {
-      throw new Error(
-        "You can't add a house without a price, bedrooms and sq footage");
-    }
-    if (price <= 0) {
-      throw new Error("Where my money");
-    }
+    // if (!price || !bedrooms || !bathrooms) {
+    //   throw new Error(
+    //     "You can't add a house without a price, bedrooms and sq footage"
+    //   );
+    // }
+    // if (price <= 0) {
+    //   throw new Error("Where my money");
+    // }
     this.id = id;
     this.bathrooms = bathrooms;
     this.bedrooms = bedrooms;
-    this.description = description || "";
-    this.levels = levels || "";
+    this.description = description ;
+    this.levels = levels ;
     this.price = price;
-    this.imgUrl = imgUrl || "";
-    this.year = year || "";
+    this.imgUrl = imgUrl;
+    this.year = year ;
   }
   get CardTemplate() {
     return /*html*/ `
@@ -39,13 +40,12 @@ export class House {
         <div class="p-3 d-flex justify-content-between align-items-center">
           <p class="m-0">$${this.price}</p>
           <div class="d-flex align-items-center">
-            <p class="m-0">Color:</p>
+            <p class="m-0">year:</p>
             <div> ${this.year}div>
           </div>
           <i class="mdi mdi-delete selectable" onclick="app.housesController.removeHouse('${this.id}')"></i>
         </div>
       </div>
-    </div>`
+    </div>`;
   }
 }
-

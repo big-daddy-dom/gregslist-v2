@@ -1,14 +1,14 @@
-export class Car{
-constructor({ id, make, model, year, color, imgUrl, price, description }) {
-  this.id = id
-  this.make = make || ''
-  this.model = model || ''
-  this.description = description || ''
-  this.price = price || 0
-  this.year = year || ''
-  this.color = color || '#000000'
-  this.imgUrl = imgUrl || ''
-}
+export class Car {
+  constructor({ id, make, model, year, color, imgUrl, price, description }) {
+    this.id = id;
+    this.make = make || "";
+    this.model = model || "";
+    this.description = description || "";
+    this.price = price || 0;
+    this.year = year || "";
+    this.color = color || "#000000";
+    this.imgUrl = imgUrl || "";
+  }
   get CardTemplate() {
     return /*html*/ `
     <div class="car col-md-4 p-4">
@@ -27,6 +27,6 @@ constructor({ id, make, model, year, color, imgUrl, price, description }) {
           <i class="mdi mdi-delete selectable" onclick="app.carsController.removeCar('${this.id}')"></i>
         </div>
       </div>
-    </div>`
+    </div>`;
   }
 }
